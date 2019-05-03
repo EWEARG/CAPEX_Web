@@ -1,0 +1,85 @@
+﻿@model IEnumerable<CAPEX_Web.SOL_Proyectos>
+
+@{
+    ViewBag.Title = "Proyectos";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear NUEVO", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PROJECT_NUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROYECTO_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_LARGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROYECTO_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORGANIZACION_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROYECTO_DIVISA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTO_DIVISA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTO_CONVERTIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTO_PRESUPUESTADO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROJECT_NUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROYECTO_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROYECTO_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORGANIZACION_NOMBRE)
+        </td>
+        <td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROYECTO_DIVISA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTO_DIVISA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTO_CONVERTIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTO_PRESUPUESTADO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_Proyecto }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ID_Proyecto }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ID_Proyecto })
+        </td>
+    </tr>
+}
+
+</table>

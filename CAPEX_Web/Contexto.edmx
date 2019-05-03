@@ -1,0 +1,858 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CAPEXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DIM_Fecha">
+          <Key>
+            <PropertyRef Name="FechaID" />
+          </Key>
+          <Property Name="FechaID" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="FECHA_Descripcion_corta" Type="char" MaxLength="10" />
+          <Property Name="FECHA_Descripcion_media" Type="char" MaxLength="24" />
+          <Property Name="FECHA_Descripcion_larga" Type="char" MaxLength="40" />
+          <Property Name="DIA_Numero_Semana" Type="tinyint" />
+          <Property Name="DIA_Numero_Mes" Type="tinyint" Nullable="false" />
+          <Property Name="DIA_Numero_Anio" Type="smallint" Nullable="false" />
+          <Property Name="DIA_Semana_Nombre" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="DIA_Semana_Abrev" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="SEMANA_Numero_Anio" Type="tinyint" Nullable="false" />
+          <Property Name="SEMANA_Anio_ID" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="SEMANA_Anio_Desc" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="MES_Numero" Type="tinyint" Nullable="false" />
+          <Property Name="MES_Nombre" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="MES_Abrev" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="MES_Anio_ID" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="MES_Anio_Desc" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="TRIMESTRE_Numero" Type="tinyint" Nullable="false" />
+          <Property Name="TRIMESTRE_Nombre" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="TRIMESTRE_Abrev" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="TRIMESTRE_Año_ID" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="ANIO2" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="ANIO4" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="X_EOM_Fin_Mes" Type="date" />
+          <Property Name="X_FinDeSemana" Type="bit" />
+          <Property Name="X_Festivo" Type="bit" />
+          <Property Name="X_AnioBisiesto" Type="bit" />
+        </EntityType>
+        <EntityType Name="SOL_Areas">
+          <Key>
+            <PropertyRef Name="AREA_ID" />
+          </Key>
+          <Property Name="AREA_ID" Type="int" Nullable="false" />
+          <Property Name="AREA_NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="AREA_STATUS" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SOL_Centro_Costo">
+          <Key>
+            <PropertyRef Name="CCOSTO_ID" />
+          </Key>
+          <Property Name="CCOSTO_ID" Type="int" Nullable="false" />
+          <Property Name="CCOSTO_NOMBRE" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="FECHA_INI" Type="date" Nullable="false" />
+          <Property Name="FECHA_FIN" Type="date" Nullable="false" />
+          <Property Name="ACTIVADO" Type="int" />
+          <Property Name="PRINCIPAL" Type="int" />
+          <Property Name="GRUPO" Type="char" MaxLength="1" />
+          <Property Name="CONTABILIZA" Type="int" />
+          <Property Name="PRESUPUESTA" Type="int" />
+          <Property Name="CCOSTO_ACUMULACION" Type="int" Nullable="false" />
+          <Property Name="AREA_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOL_Estados">
+          <Key>
+            <PropertyRef Name="ESTADO_ID" />
+          </Key>
+          <Property Name="ESTADO_ID" Type="int" Nullable="false" />
+          <Property Name="ESTADO_MODULO" Type="varchar" MaxLength="15" />
+          <Property Name="PROYECTO_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="ESTADO_PROXIMO" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SOL_Organizaciones">
+          <Key>
+            <PropertyRef Name="ORGANIZACION_ID" />
+          </Key>
+          <Property Name="ORGANIZACION_ID" Type="int" Nullable="false" />
+          <Property Name="ORGANIZACION_NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="ORGANIZACION_STATUS" Type="char" MaxLength="1" />
+          <Property Name="SECTOR_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SOL_Presupuesto_BD">
+          <Key>
+            <PropertyRef Name="ID_Proyecto" />
+            <PropertyRef Name="Fecha_Pres" />
+          </Key>
+          <Property Name="ID_Proyecto" Type="int" Nullable="false" />
+          <Property Name="Fecha_Pres" Type="date" Nullable="false" />
+          <Property Name="PROJECT_NUMBER" Type="varchar" MaxLength="25" />
+          <Property Name="Pres_PLANIFICADO" Type="money" />
+          <Property Name="Pres_ORIGINAL" Type="money" />
+          <Property Name="Pres_MOD_44" Type="money" />
+          <Property Name="Pres_ARRASTRE" Type="money" />
+          <Property Name="CHK" Type="nvarchar" MaxLength="5" />
+          <Property Name="Indice_VNR_ORIGEN" Type="float" />
+          <Property Name="FechaID" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="SOL_Proyectos">
+          <Key>
+            <PropertyRef Name="ID_Proyecto" />
+          </Key>
+          <Property Name="ID_Proyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROJECT_NUMBER" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="PROYECTO_NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NOMBRE_LARGO" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="ESTADO_ID" Type="int" />
+          <Property Name="PROYECTO_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="AREA_ID" Type="int" />
+          <Property Name="AREA_NOMBRE" Type="varchar" MaxLength="25" />
+          <Property Name="SECTOR_ID" Type="int" />
+          <Property Name="SECTOR_NOMBRE" Type="varchar" MaxLength="40" />
+          <Property Name="ORGANIZACION_ID" Type="int" />
+          <Property Name="ORGANIZACION_NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="PROYECTO_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="PROYECTO_TYPE_DESCRIPTION" Type="varchar" MaxLength="100" />
+          <Property Name="PROYECTO_DIVISA" Type="varchar" MaxLength="3" />
+          <Property Name="MONTO_DIVISA" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="MONTO_CONVERTIDO" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="MONTO_PRESUPUESTADO" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="DISTRIBUTION_RULE" Type="varchar" MaxLength="20" />
+          <Property Name="DISTRIBUTION_RULE_MEANING" Type="varchar" MaxLength="80" />
+          <Property Name="CONTEXT_VALUE" Type="varchar" MaxLength="30" />
+          <Property Name="PROYECTO_CON_PRESUPUESTO" Type="varchar" MaxLength="25" />
+          <Property Name="FECHA_INICIO_ESTIMADO" Type="datetime2" Precision="7" />
+          <Property Name="FECHA_INICIO_REAL" Type="datetime2" Precision="7" />
+          <Property Name="DURACION_ESTIMADA_MESES" Type="int" />
+          <Property Name="INGRESO_DATE" Type="datetime2" Precision="7" />
+          <Property Name="ESTIMADO_DATE" Type="datetime2" Precision="7" />
+          <Property Name="PRESUPUESTADO_DATE" Type="datetime2" Precision="7" />
+          <Property Name="COMPLETADO_DATE" Type="datetime2" Precision="7" />
+          <Property Name="ACTUALIZADO_DATE" Type="datetime2" Precision="7" />
+          <Property Name="ACTUALIZADO_POR" Type="varchar" MaxLength="25" />
+          <Property Name="CREADO_DATE" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CREADO_POR" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOL_Sectores">
+          <Key>
+            <PropertyRef Name="SECTOR_ID" />
+          </Key>
+          <Property Name="SECTOR_ID" Type="int" Nullable="false" />
+          <Property Name="SECTOR_NOMBRE" Type="varchar" MaxLength="40" />
+          <Property Name="AREA_ID" Type="int" Nullable="false" />
+          <Property Name="SECTOR_STATUS" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAPEX.dbo.SOL_Usuarios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SOL_Usuarios">
+          <Key>
+            <PropertyRef Name="ID_Usuario" />
+          </Key>
+          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+          <Property Name="USUARIO_NOMBRE" Type="varchar" MaxLength="25" />
+          <Property Name="USUARIO_DESCRIPCION" Type="varchar" MaxLength="50" />
+          <Property Name="SECTOR_ID" Type="int" />
+          <Property Name="ORGANIZACION_ID" Type="int" />
+          <Property Name="ID_ACTIVO" Type="bit" />
+        </EntityType>
+        <Association Name="FK_SOL_Presupuesto_BD_DIM_Fecha">
+          <End Role="DIM_Fecha" Type="Self.DIM_Fecha" Multiplicity="0..1" />
+          <End Role="SOL_Presupuesto_BD" Type="Self.SOL_Presupuesto_BD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIM_Fecha">
+              <PropertyRef Name="FechaID" />
+            </Principal>
+            <Dependent Role="SOL_Presupuesto_BD">
+              <PropertyRef Name="FechaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Presupuesto_BD_SOL_Proyectos">
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="1" />
+          <End Role="SOL_Presupuesto_BD" Type="Self.SOL_Presupuesto_BD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Proyectos">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="SOL_Presupuesto_BD">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Proyectos_SOL_Areas">
+          <End Role="SOL_Areas" Type="Self.SOL_Areas" Multiplicity="0..1" />
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Areas">
+              <PropertyRef Name="AREA_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="AREA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Proyectos_SOL_Estados">
+          <End Role="SOL_Estados" Type="Self.SOL_Estados" Multiplicity="0..1" />
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Estados">
+              <PropertyRef Name="ESTADO_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="ESTADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Proyectos_SOL_Organizaciones">
+          <End Role="SOL_Organizaciones" Type="Self.SOL_Organizaciones" Multiplicity="0..1" />
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Organizaciones">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Proyectos_SOL_Sectores">
+          <End Role="SOL_Sectores" Type="Self.SOL_Sectores" Multiplicity="0..1" />
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Sectores">
+              <PropertyRef Name="SECTOR_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="SECTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Sectores_SOL_Areas">
+          <End Role="SOL_Areas" Type="Self.SOL_Areas" Multiplicity="1" />
+          <End Role="SOL_Sectores" Type="Self.SOL_Sectores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Areas">
+              <PropertyRef Name="AREA_ID" />
+            </Principal>
+            <Dependent Role="SOL_Sectores">
+              <PropertyRef Name="AREA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Usuarios_SOL_Organizaciones">
+          <End Role="SOL_Organizaciones" Type="Self.SOL_Organizaciones" Multiplicity="0..1" />
+          <End Role="SOL_Usuarios" Type="Self.SOL_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Organizaciones">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Principal>
+            <Dependent Role="SOL_Usuarios">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Usuarios_SOL_Sectores">
+          <End Role="SOL_Sectores" Type="Self.SOL_Sectores" Multiplicity="0..1" />
+          <End Role="SOL_Usuarios" Type="Self.SOL_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Sectores">
+              <PropertyRef Name="SECTOR_ID" />
+            </Principal>
+            <Dependent Role="SOL_Usuarios">
+              <PropertyRef Name="SECTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Proyectos_Resumen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CAPEXModelStoreContainer">
+          <EntitySet Name="DIM_Fecha" EntityType="Self.DIM_Fecha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Areas" EntityType="Self.SOL_Areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Centro_Costo" EntityType="Self.SOL_Centro_Costo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Estados" EntityType="Self.SOL_Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Organizaciones" EntityType="Self.SOL_Organizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Presupuesto_BD" EntityType="Self.SOL_Presupuesto_BD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Proyectos" EntityType="Self.SOL_Proyectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Sectores" EntityType="Self.SOL_Sectores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOL_Usuarios" EntityType="Self.SOL_Usuarios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SOL_Usuarios].[ID_Usuario] AS [ID_Usuario], 
+    [SOL_Usuarios].[USUARIO_NOMBRE] AS [USUARIO_NOMBRE], 
+    [SOL_Usuarios].[USUARIO_DESCRIPCION] AS [USUARIO_DESCRIPCION], 
+    [SOL_Usuarios].[SECTOR_ID] AS [SECTOR_ID], 
+    [SOL_Usuarios].[ORGANIZACION_ID] AS [ORGANIZACION_ID], 
+    [SOL_Usuarios].[ID_ACTIVO] AS [ID_ACTIVO]
+    FROM [dbo].[SOL_Usuarios] AS [SOL_Usuarios]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_SOL_Presupuesto_BD_DIM_Fecha" Association="Self.FK_SOL_Presupuesto_BD_DIM_Fecha">
+            <End Role="DIM_Fecha" EntitySet="DIM_Fecha" />
+            <End Role="SOL_Presupuesto_BD" EntitySet="SOL_Presupuesto_BD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Presupuesto_BD_SOL_Proyectos" Association="Self.FK_SOL_Presupuesto_BD_SOL_Proyectos">
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+            <End Role="SOL_Presupuesto_BD" EntitySet="SOL_Presupuesto_BD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Areas" Association="Self.FK_SOL_Proyectos_SOL_Areas">
+            <End Role="SOL_Areas" EntitySet="SOL_Areas" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Estados" Association="Self.FK_SOL_Proyectos_SOL_Estados">
+            <End Role="SOL_Estados" EntitySet="SOL_Estados" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Organizaciones" Association="Self.FK_SOL_Proyectos_SOL_Organizaciones">
+            <End Role="SOL_Organizaciones" EntitySet="SOL_Organizaciones" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Sectores" Association="Self.FK_SOL_Proyectos_SOL_Sectores">
+            <End Role="SOL_Sectores" EntitySet="SOL_Sectores" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Sectores_SOL_Areas" Association="Self.FK_SOL_Sectores_SOL_Areas">
+            <End Role="SOL_Areas" EntitySet="SOL_Areas" />
+            <End Role="SOL_Sectores" EntitySet="SOL_Sectores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Usuarios_SOL_Organizaciones" Association="Self.FK_SOL_Usuarios_SOL_Organizaciones">
+            <End Role="SOL_Organizaciones" EntitySet="SOL_Organizaciones" />
+            <End Role="SOL_Usuarios" EntitySet="SOL_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Usuarios_SOL_Sectores" Association="Self.FK_SOL_Usuarios_SOL_Sectores">
+            <End Role="SOL_Sectores" EntitySet="SOL_Sectores" />
+            <End Role="SOL_Usuarios" EntitySet="SOL_Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CAPEXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DIM_Fecha">
+          <Key>
+            <PropertyRef Name="FechaID" />
+          </Key>
+          <Property Name="FechaID" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FECHA_Descripcion_corta" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_Descripcion_media" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_Descripcion_larga" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="DIA_Numero_Semana" Type="Byte" />
+          <Property Name="DIA_Numero_Mes" Type="Byte" Nullable="false" />
+          <Property Name="DIA_Numero_Anio" Type="Int16" Nullable="false" />
+          <Property Name="DIA_Semana_Nombre" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DIA_Semana_Abrev" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SEMANA_Numero_Anio" Type="Byte" Nullable="false" />
+          <Property Name="SEMANA_Anio_ID" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SEMANA_Anio_Desc" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MES_Numero" Type="Byte" Nullable="false" />
+          <Property Name="MES_Nombre" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MES_Abrev" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MES_Anio_ID" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MES_Anio_Desc" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TRIMESTRE_Numero" Type="Byte" Nullable="false" />
+          <Property Name="TRIMESTRE_Nombre" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TRIMESTRE_Abrev" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TRIMESTRE_Año_ID" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ANIO2" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ANIO4" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="X_EOM_Fin_Mes" Type="DateTime" Precision="0" />
+          <Property Name="X_FinDeSemana" Type="Boolean" />
+          <Property Name="X_Festivo" Type="Boolean" />
+          <Property Name="X_AnioBisiesto" Type="Boolean" />
+          <NavigationProperty Name="SOL_Presupuesto_BD" Relationship="Self.FK_SOL_Presupuesto_BD_DIM_Fecha" FromRole="DIM_Fecha" ToRole="SOL_Presupuesto_BD" />
+        </EntityType>
+        <EntityType Name="SOL_Areas">
+          <Key>
+            <PropertyRef Name="AREA_ID" />
+          </Key>
+          <Property Name="AREA_ID" Type="Int32" Nullable="false" />
+          <Property Name="AREA_NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AREA_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="SOL_Proyectos" Relationship="Self.FK_SOL_Proyectos_SOL_Areas" FromRole="SOL_Areas" ToRole="SOL_Proyectos" />
+          <NavigationProperty Name="SOL_Sectores" Relationship="CAPEXModel.FK_SOL_Sectores_SOL_Areas" FromRole="SOL_Areas" ToRole="SOL_Sectores" />
+        </EntityType>
+        <EntityType Name="SOL_Centro_Costo">
+          <Key>
+            <PropertyRef Name="CCOSTO_ID" />
+          </Key>
+          <Property Name="CCOSTO_ID" Type="Int32" Nullable="false" />
+          <Property Name="CCOSTO_NOMBRE" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_INI" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FECHA_FIN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ACTIVADO" Type="Int32" />
+          <Property Name="PRINCIPAL" Type="Int32" />
+          <Property Name="GRUPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CONTABILIZA" Type="Int32" />
+          <Property Name="PRESUPUESTA" Type="Int32" />
+          <Property Name="CCOSTO_ACUMULACION" Type="Int32" Nullable="false" />
+          <Property Name="AREA_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOL_Estados">
+          <Key>
+            <PropertyRef Name="ESTADO_ID" />
+          </Key>
+          <Property Name="ESTADO_ID" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO_MODULO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PROYECTO_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO_PROXIMO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SOL_Proyectos" Relationship="CAPEXModel.FK_SOL_Proyectos_SOL_Estados" FromRole="SOL_Estados" ToRole="SOL_Proyectos" />
+        </EntityType>
+        <EntityType Name="SOL_Organizaciones">
+          <Key>
+            <PropertyRef Name="ORGANIZACION_ID" />
+          </Key>
+          <Property Name="ORGANIZACION_ID" Type="Int32" Nullable="false" />
+          <Property Name="ORGANIZACION_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ORGANIZACION_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="SOL_Proyectos" Relationship="Self.FK_SOL_Proyectos_SOL_Organizaciones" FromRole="SOL_Organizaciones" ToRole="SOL_Proyectos" />
+          <Property Name="SECTOR_ID" Type="Int32" />
+          <NavigationProperty Name="SOL_Usuarios" Relationship="CAPEXModel.FK_SOL_Usuarios_SOL_Organizaciones" FromRole="SOL_Organizaciones" ToRole="SOL_Usuarios" />
+        </EntityType>
+        <EntityType Name="SOL_Presupuesto_BD">
+          <Key>
+            <PropertyRef Name="ID_Proyecto" />
+            <PropertyRef Name="Fecha_Pres" />
+          </Key>
+          <Property Name="ID_Proyecto" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Pres" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PROJECT_NUMBER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Pres_PLANIFICADO" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Pres_ORIGINAL" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Pres_MOD_44" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Pres_ARRASTRE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CHK" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Indice_VNR_ORIGEN" Type="Double" />
+          <Property Name="FechaID" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DIM_Fecha" Relationship="Self.FK_SOL_Presupuesto_BD_DIM_Fecha" FromRole="SOL_Presupuesto_BD" ToRole="DIM_Fecha" />
+          <NavigationProperty Name="SOL_Proyectos" Relationship="Self.FK_SOL_Presupuesto_BD_SOL_Proyectos" FromRole="SOL_Presupuesto_BD" ToRole="SOL_Proyectos" />
+        </EntityType>
+        <EntityType Name="SOL_Proyectos">
+          <Key>
+            <PropertyRef Name="ID_Proyecto" />
+          </Key>
+          <Property Name="ID_Proyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROJECT_NUMBER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROYECTO_NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_LARGO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO_ID" Type="Int32" />
+          <Property Name="PROYECTO_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_ID" Type="Int32" />
+          <Property Name="AREA_NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SECTOR_ID" Type="Int32" />
+          <Property Name="SECTOR_NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ORGANIZACION_ID" Type="Int32" />
+          <Property Name="ORGANIZACION_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROYECTO_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PROYECTO_TYPE_DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PROYECTO_DIVISA" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MONTO_DIVISA" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="MONTO_CONVERTIDO" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="MONTO_PRESUPUESTADO" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="DISTRIBUTION_RULE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DISTRIBUTION_RULE_MEANING" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CONTEXT_VALUE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PROYECTO_CON_PRESUPUESTO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_INICIO_ESTIMADO" Type="DateTime" Precision="7" />
+          <Property Name="FECHA_INICIO_REAL" Type="DateTime" Precision="7" />
+          <Property Name="DURACION_ESTIMADA_MESES" Type="Int32" />
+          <Property Name="INGRESO_DATE" Type="DateTime" Precision="7" />
+          <Property Name="ESTIMADO_DATE" Type="DateTime" Precision="7" />
+          <Property Name="PRESUPUESTADO_DATE" Type="DateTime" Precision="7" />
+          <Property Name="COMPLETADO_DATE" Type="DateTime" Precision="7" />
+          <Property Name="ACTUALIZADO_DATE" Type="DateTime" Precision="7" />
+          <Property Name="ACTUALIZADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREADO_DATE" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SOL_Areas" Relationship="Self.FK_SOL_Proyectos_SOL_Areas" FromRole="SOL_Proyectos" ToRole="SOL_Areas" />
+          <NavigationProperty Name="SOL_Organizaciones" Relationship="Self.FK_SOL_Proyectos_SOL_Organizaciones" FromRole="SOL_Proyectos" ToRole="SOL_Organizaciones" />
+          <NavigationProperty Name="SOL_Presupuesto_BD" Relationship="Self.FK_SOL_Presupuesto_BD_SOL_Proyectos" FromRole="SOL_Proyectos" ToRole="SOL_Presupuesto_BD" />
+          <NavigationProperty Name="SOL_Sectores" Relationship="Self.FK_SOL_Proyectos_SOL_Sectores" FromRole="SOL_Proyectos" ToRole="SOL_Sectores" />
+          <NavigationProperty Name="SOL_Estados" Relationship="CAPEXModel.FK_SOL_Proyectos_SOL_Estados" FromRole="SOL_Proyectos" ToRole="SOL_Estados" />
+        </EntityType>
+        <EntityType Name="SOL_Sectores">
+          <Key>
+            <PropertyRef Name="SECTOR_ID" />
+          </Key>
+          <Property Name="SECTOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTOR_NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTOR_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="SOL_Proyectos" Relationship="Self.FK_SOL_Proyectos_SOL_Sectores" FromRole="SOL_Sectores" ToRole="SOL_Proyectos" />
+          <NavigationProperty Name="SOL_Areas" Relationship="CAPEXModel.FK_SOL_Sectores_SOL_Areas" FromRole="SOL_Sectores" ToRole="SOL_Areas" />
+          <NavigationProperty Name="SOL_Usuarios" Relationship="CAPEXModel.FK_SOL_Usuarios_SOL_Sectores" FromRole="SOL_Sectores" ToRole="SOL_Usuarios" />
+        </EntityType>
+        <Association Name="FK_SOL_Presupuesto_BD_DIM_Fecha">
+          <End Role="DIM_Fecha" Type="Self.DIM_Fecha" Multiplicity="0..1" />
+          <End Role="SOL_Presupuesto_BD" Type="Self.SOL_Presupuesto_BD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIM_Fecha">
+              <PropertyRef Name="FechaID" />
+            </Principal>
+            <Dependent Role="SOL_Presupuesto_BD">
+              <PropertyRef Name="FechaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Proyectos_SOL_Areas">
+          <End Role="SOL_Areas" Type="Self.SOL_Areas" Multiplicity="0..1" />
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Areas">
+              <PropertyRef Name="AREA_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="AREA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Proyectos_SOL_Organizaciones">
+          <End Role="SOL_Organizaciones" Type="Self.SOL_Organizaciones" Multiplicity="0..1" />
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Organizaciones">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Presupuesto_BD_SOL_Proyectos">
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="1" />
+          <End Role="SOL_Presupuesto_BD" Type="Self.SOL_Presupuesto_BD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Proyectos">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="SOL_Presupuesto_BD">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Proyectos_SOL_Sectores">
+          <End Role="SOL_Sectores" Type="Self.SOL_Sectores" Multiplicity="0..1" />
+          <End Role="SOL_Proyectos" Type="Self.SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Sectores">
+              <PropertyRef Name="SECTOR_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="SECTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAPEXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DIM_Fecha" EntityType="Self.DIM_Fecha" />
+          <EntitySet Name="SOL_Areas" EntityType="Self.SOL_Areas" />
+          <EntitySet Name="SOL_Centro_Costo" EntityType="Self.SOL_Centro_Costo" />
+          <EntitySet Name="SOL_Estados" EntityType="Self.SOL_Estados" />
+          <EntitySet Name="SOL_Organizaciones" EntityType="Self.SOL_Organizaciones" />
+          <EntitySet Name="SOL_Presupuesto_BD" EntityType="Self.SOL_Presupuesto_BD" />
+          <EntitySet Name="SOL_Proyectos" EntityType="Self.SOL_Proyectos" />
+          <EntitySet Name="SOL_Sectores" EntityType="Self.SOL_Sectores" />
+          <AssociationSet Name="FK_SOL_Presupuesto_BD_DIM_Fecha" Association="Self.FK_SOL_Presupuesto_BD_DIM_Fecha">
+            <End Role="DIM_Fecha" EntitySet="DIM_Fecha" />
+            <End Role="SOL_Presupuesto_BD" EntitySet="SOL_Presupuesto_BD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Areas" Association="Self.FK_SOL_Proyectos_SOL_Areas">
+            <End Role="SOL_Areas" EntitySet="SOL_Areas" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Organizaciones" Association="Self.FK_SOL_Proyectos_SOL_Organizaciones">
+            <End Role="SOL_Organizaciones" EntitySet="SOL_Organizaciones" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Presupuesto_BD_SOL_Proyectos" Association="Self.FK_SOL_Presupuesto_BD_SOL_Proyectos">
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+            <End Role="SOL_Presupuesto_BD" EntitySet="SOL_Presupuesto_BD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Sectores" Association="Self.FK_SOL_Proyectos_SOL_Sectores">
+            <End Role="SOL_Sectores" EntitySet="SOL_Sectores" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Proyectos_SOL_Estados" Association="CAPEXModel.FK_SOL_Proyectos_SOL_Estados">
+            <End Role="SOL_Estados" EntitySet="SOL_Estados" />
+            <End Role="SOL_Proyectos" EntitySet="SOL_Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Sectores_SOL_Areas" Association="CAPEXModel.FK_SOL_Sectores_SOL_Areas">
+            <End Role="SOL_Areas" EntitySet="SOL_Areas" />
+            <End Role="SOL_Sectores" EntitySet="SOL_Sectores" />
+          </AssociationSet>
+          <FunctionImport Name="Proyectos_Resumen" ReturnType="Collection(CAPEXModel.Proyectos_Resumen_Result)" />
+          <EntitySet Name="SOL_Usuarios" EntityType="CAPEXModel.SOL_Usuarios" />
+          <AssociationSet Name="FK_SOL_Usuarios_SOL_Organizaciones" Association="CAPEXModel.FK_SOL_Usuarios_SOL_Organizaciones">
+            <End Role="SOL_Organizaciones" EntitySet="SOL_Organizaciones" />
+            <End Role="SOL_Usuarios" EntitySet="SOL_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOL_Usuarios_SOL_Sectores" Association="CAPEXModel.FK_SOL_Usuarios_SOL_Sectores">
+            <End Role="SOL_Sectores" EntitySet="SOL_Sectores" />
+            <End Role="SOL_Usuarios" EntitySet="SOL_Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_SOL_Proyectos_SOL_Estados">
+          <End Type="CAPEXModel.SOL_Estados" Role="SOL_Estados" Multiplicity="0..1" />
+          <End Type="CAPEXModel.SOL_Proyectos" Role="SOL_Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Estados">
+              <PropertyRef Name="ESTADO_ID" />
+            </Principal>
+            <Dependent Role="SOL_Proyectos">
+              <PropertyRef Name="ESTADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Sectores_SOL_Areas">
+          <End Type="CAPEXModel.SOL_Areas" Role="SOL_Areas" Multiplicity="1" />
+          <End Type="CAPEXModel.SOL_Sectores" Role="SOL_Sectores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Areas">
+              <PropertyRef Name="AREA_ID" />
+            </Principal>
+            <Dependent Role="SOL_Sectores">
+              <PropertyRef Name="AREA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Proyectos_Resumen_Result">
+          <Property Type="String" Name="AREA" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="GERENCIA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ESTADO" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="CANTIDAD" Nullable="true" />
+          <Property Type="Decimal" Name="PRESUPUESTADO" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <EntityType Name="SOL_Usuarios">
+          <Key>
+            <PropertyRef Name="ID_Usuario" />
+          </Key>
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO_NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SECTOR_ID" Type="Int32" />
+          <Property Name="ORGANIZACION_ID" Type="Int32" />
+          <Property Name="ID_ACTIVO" Type="Boolean" />
+          <NavigationProperty Name="SOL_Organizaciones" Relationship="CAPEXModel.FK_SOL_Usuarios_SOL_Organizaciones" FromRole="SOL_Usuarios" ToRole="SOL_Organizaciones" />
+          <NavigationProperty Name="SOL_Sectores" Relationship="CAPEXModel.FK_SOL_Usuarios_SOL_Sectores" FromRole="SOL_Usuarios" ToRole="SOL_Sectores" />
+        </EntityType>
+        <Association Name="FK_SOL_Usuarios_SOL_Organizaciones">
+          <End Type="CAPEXModel.SOL_Organizaciones" Role="SOL_Organizaciones" Multiplicity="0..1" />
+          <End Type="CAPEXModel.SOL_Usuarios" Role="SOL_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Organizaciones">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Principal>
+            <Dependent Role="SOL_Usuarios">
+              <PropertyRef Name="ORGANIZACION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOL_Usuarios_SOL_Sectores">
+          <End Type="CAPEXModel.SOL_Sectores" Role="SOL_Sectores" Multiplicity="0..1" />
+          <End Type="CAPEXModel.SOL_Usuarios" Role="SOL_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOL_Sectores">
+              <PropertyRef Name="SECTOR_ID" />
+            </Principal>
+            <Dependent Role="SOL_Usuarios">
+              <PropertyRef Name="SECTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CAPEXModelStoreContainer" CdmEntityContainer="CAPEXEntities">
+          <EntitySetMapping Name="DIM_Fecha">
+            <EntityTypeMapping TypeName="CAPEXModel.DIM_Fecha">
+              <MappingFragment StoreEntitySet="DIM_Fecha">
+                <ScalarProperty Name="FechaID" ColumnName="FechaID" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FECHA_Descripcion_corta" ColumnName="FECHA_Descripcion_corta" />
+                <ScalarProperty Name="FECHA_Descripcion_media" ColumnName="FECHA_Descripcion_media" />
+                <ScalarProperty Name="FECHA_Descripcion_larga" ColumnName="FECHA_Descripcion_larga" />
+                <ScalarProperty Name="DIA_Numero_Semana" ColumnName="DIA_Numero_Semana" />
+                <ScalarProperty Name="DIA_Numero_Mes" ColumnName="DIA_Numero_Mes" />
+                <ScalarProperty Name="DIA_Numero_Anio" ColumnName="DIA_Numero_Anio" />
+                <ScalarProperty Name="DIA_Semana_Nombre" ColumnName="DIA_Semana_Nombre" />
+                <ScalarProperty Name="DIA_Semana_Abrev" ColumnName="DIA_Semana_Abrev" />
+                <ScalarProperty Name="SEMANA_Numero_Anio" ColumnName="SEMANA_Numero_Anio" />
+                <ScalarProperty Name="SEMANA_Anio_ID" ColumnName="SEMANA_Anio_ID" />
+                <ScalarProperty Name="SEMANA_Anio_Desc" ColumnName="SEMANA_Anio_Desc" />
+                <ScalarProperty Name="MES_Numero" ColumnName="MES_Numero" />
+                <ScalarProperty Name="MES_Nombre" ColumnName="MES_Nombre" />
+                <ScalarProperty Name="MES_Abrev" ColumnName="MES_Abrev" />
+                <ScalarProperty Name="MES_Anio_ID" ColumnName="MES_Anio_ID" />
+                <ScalarProperty Name="MES_Anio_Desc" ColumnName="MES_Anio_Desc" />
+                <ScalarProperty Name="TRIMESTRE_Numero" ColumnName="TRIMESTRE_Numero" />
+                <ScalarProperty Name="TRIMESTRE_Nombre" ColumnName="TRIMESTRE_Nombre" />
+                <ScalarProperty Name="TRIMESTRE_Abrev" ColumnName="TRIMESTRE_Abrev" />
+                <ScalarProperty Name="TRIMESTRE_Año_ID" ColumnName="TRIMESTRE_Año_ID" />
+                <ScalarProperty Name="ANIO2" ColumnName="ANIO2" />
+                <ScalarProperty Name="ANIO4" ColumnName="ANIO4" />
+                <ScalarProperty Name="X_EOM_Fin_Mes" ColumnName="X_EOM_Fin_Mes" />
+                <ScalarProperty Name="X_FinDeSemana" ColumnName="X_FinDeSemana" />
+                <ScalarProperty Name="X_Festivo" ColumnName="X_Festivo" />
+                <ScalarProperty Name="X_AnioBisiesto" ColumnName="X_AnioBisiesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOL_Areas">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Areas">
+              <MappingFragment StoreEntitySet="SOL_Areas">
+                <ScalarProperty Name="AREA_ID" ColumnName="AREA_ID" />
+                <ScalarProperty Name="AREA_NOMBRE" ColumnName="AREA_NOMBRE" />
+                <ScalarProperty Name="AREA_STATUS" ColumnName="AREA_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOL_Centro_Costo">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Centro_Costo">
+              <MappingFragment StoreEntitySet="SOL_Centro_Costo">
+                <ScalarProperty Name="CCOSTO_ID" ColumnName="CCOSTO_ID" />
+                <ScalarProperty Name="CCOSTO_NOMBRE" ColumnName="CCOSTO_NOMBRE" />
+                <ScalarProperty Name="FECHA_INI" ColumnName="FECHA_INI" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="ACTIVADO" ColumnName="ACTIVADO" />
+                <ScalarProperty Name="PRINCIPAL" ColumnName="PRINCIPAL" />
+                <ScalarProperty Name="GRUPO" ColumnName="GRUPO" />
+                <ScalarProperty Name="CONTABILIZA" ColumnName="CONTABILIZA" />
+                <ScalarProperty Name="PRESUPUESTA" ColumnName="PRESUPUESTA" />
+                <ScalarProperty Name="CCOSTO_ACUMULACION" ColumnName="CCOSTO_ACUMULACION" />
+                <ScalarProperty Name="AREA_ID" ColumnName="AREA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOL_Estados">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Estados">
+              <MappingFragment StoreEntitySet="SOL_Estados">
+                <ScalarProperty Name="ESTADO_ID" ColumnName="ESTADO_ID" />
+                <ScalarProperty Name="ESTADO_MODULO" ColumnName="ESTADO_MODULO" />
+                <ScalarProperty Name="PROYECTO_STATUS" ColumnName="PROYECTO_STATUS" />
+                <ScalarProperty Name="ESTADO_PROXIMO" ColumnName="ESTADO_PROXIMO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOL_Organizaciones">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Organizaciones">
+              <MappingFragment StoreEntitySet="SOL_Organizaciones">
+                <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+                <ScalarProperty Name="ORGANIZACION_ID" ColumnName="ORGANIZACION_ID" />
+                <ScalarProperty Name="ORGANIZACION_NOMBRE" ColumnName="ORGANIZACION_NOMBRE" />
+                <ScalarProperty Name="ORGANIZACION_STATUS" ColumnName="ORGANIZACION_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOL_Presupuesto_BD">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Presupuesto_BD">
+              <MappingFragment StoreEntitySet="SOL_Presupuesto_BD">
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="Fecha_Pres" ColumnName="Fecha_Pres" />
+                <ScalarProperty Name="PROJECT_NUMBER" ColumnName="PROJECT_NUMBER" />
+                <ScalarProperty Name="Pres_PLANIFICADO" ColumnName="Pres_PLANIFICADO" />
+                <ScalarProperty Name="Pres_ORIGINAL" ColumnName="Pres_ORIGINAL" />
+                <ScalarProperty Name="Pres_MOD_44" ColumnName="Pres_MOD_44" />
+                <ScalarProperty Name="Pres_ARRASTRE" ColumnName="Pres_ARRASTRE" />
+                <ScalarProperty Name="CHK" ColumnName="CHK" />
+                <ScalarProperty Name="Indice_VNR_ORIGEN" ColumnName="Indice_VNR_ORIGEN" />
+                <ScalarProperty Name="FechaID" ColumnName="FechaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOL_Proyectos">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Proyectos">
+              <MappingFragment StoreEntitySet="SOL_Proyectos">
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="PROJECT_NUMBER" ColumnName="PROJECT_NUMBER" />
+                <ScalarProperty Name="PROYECTO_NOMBRE" ColumnName="PROYECTO_NOMBRE" />
+                <ScalarProperty Name="NOMBRE_LARGO" ColumnName="NOMBRE_LARGO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ESTADO_ID" ColumnName="ESTADO_ID" />
+                <ScalarProperty Name="PROYECTO_STATUS" ColumnName="PROYECTO_STATUS" />
+                <ScalarProperty Name="AREA_ID" ColumnName="AREA_ID" />
+                <ScalarProperty Name="AREA_NOMBRE" ColumnName="AREA_NOMBRE" />
+                <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+                <ScalarProperty Name="SECTOR_NOMBRE" ColumnName="SECTOR_NOMBRE" />
+                <ScalarProperty Name="ORGANIZACION_ID" ColumnName="ORGANIZACION_ID" />
+                <ScalarProperty Name="ORGANIZACION_NOMBRE" ColumnName="ORGANIZACION_NOMBRE" />
+                <ScalarProperty Name="PROYECTO_TYPE" ColumnName="PROYECTO_TYPE" />
+                <ScalarProperty Name="PROYECTO_TYPE_DESCRIPTION" ColumnName="PROYECTO_TYPE_DESCRIPTION" />
+                <ScalarProperty Name="PROYECTO_DIVISA" ColumnName="PROYECTO_DIVISA" />
+                <ScalarProperty Name="MONTO_DIVISA" ColumnName="MONTO_DIVISA" />
+                <ScalarProperty Name="MONTO_CONVERTIDO" ColumnName="MONTO_CONVERTIDO" />
+                <ScalarProperty Name="MONTO_PRESUPUESTADO" ColumnName="MONTO_PRESUPUESTADO" />
+                <ScalarProperty Name="DISTRIBUTION_RULE" ColumnName="DISTRIBUTION_RULE" />
+                <ScalarProperty Name="DISTRIBUTION_RULE_MEANING" ColumnName="DISTRIBUTION_RULE_MEANING" />
+                <ScalarProperty Name="CONTEXT_VALUE" ColumnName="CONTEXT_VALUE" />
+                <ScalarProperty Name="PROYECTO_CON_PRESUPUESTO" ColumnName="PROYECTO_CON_PRESUPUESTO" />
+                <ScalarProperty Name="FECHA_INICIO_ESTIMADO" ColumnName="FECHA_INICIO_ESTIMADO" />
+                <ScalarProperty Name="FECHA_INICIO_REAL" ColumnName="FECHA_INICIO_REAL" />
+                <ScalarProperty Name="DURACION_ESTIMADA_MESES" ColumnName="DURACION_ESTIMADA_MESES" />
+                <ScalarProperty Name="INGRESO_DATE" ColumnName="INGRESO_DATE" />
+                <ScalarProperty Name="ESTIMADO_DATE" ColumnName="ESTIMADO_DATE" />
+                <ScalarProperty Name="PRESUPUESTADO_DATE" ColumnName="PRESUPUESTADO_DATE" />
+                <ScalarProperty Name="COMPLETADO_DATE" ColumnName="COMPLETADO_DATE" />
+                <ScalarProperty Name="ACTUALIZADO_DATE" ColumnName="ACTUALIZADO_DATE" />
+                <ScalarProperty Name="ACTUALIZADO_POR" ColumnName="ACTUALIZADO_POR" />
+                <ScalarProperty Name="CREADO_DATE" ColumnName="CREADO_DATE" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOL_Sectores">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Sectores">
+              <MappingFragment StoreEntitySet="SOL_Sectores">
+                <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+                <ScalarProperty Name="SECTOR_NOMBRE" ColumnName="SECTOR_NOMBRE" />
+                <ScalarProperty Name="AREA_ID" ColumnName="AREA_ID" />
+                <ScalarProperty Name="SECTOR_STATUS" ColumnName="SECTOR_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Proyectos_Resumen" FunctionName="CAPEXModel.Store.Proyectos_Resumen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAPEXModel.Proyectos_Resumen_Result">
+                <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="GERENCIA" ColumnName="GERENCIA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRESUPUESTADO" ColumnName="PRESUPUESTADO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="SOL_Usuarios">
+            <EntityTypeMapping TypeName="CAPEXModel.SOL_Usuarios">
+              <MappingFragment StoreEntitySet="SOL_Usuarios">
+                <ScalarProperty Name="ID_ACTIVO" ColumnName="ID_ACTIVO" />
+                <ScalarProperty Name="ORGANIZACION_ID" ColumnName="ORGANIZACION_ID" />
+                <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+                <ScalarProperty Name="USUARIO_DESCRIPCION" ColumnName="USUARIO_DESCRIPCION" />
+                <ScalarProperty Name="USUARIO_NOMBRE" ColumnName="USUARIO_NOMBRE" />
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

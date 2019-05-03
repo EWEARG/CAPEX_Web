@@ -1,0 +1,288 @@
+﻿@model CAPEX_Web.SOL_Proyectos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SOL_Proyectos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJECT_NUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJECT_NUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROYECTO_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROYECTO_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_LARGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_LARGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROYECTO_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROYECTO_STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SECTOR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SECTOR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORGANIZACION_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORGANIZACION_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROYECTO_TYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROYECTO_TYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROYECTO_TYPE_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROYECTO_TYPE_DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROYECTO_DIVISA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROYECTO_DIVISA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTO_DIVISA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTO_DIVISA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTO_CONVERTIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTO_CONVERTIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTO_PRESUPUESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTO_PRESUPUESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRIBUTION_RULE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRIBUTION_RULE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRIBUTION_RULE_MEANING)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRIBUTION_RULE_MEANING)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTEXT_VALUE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTEXT_VALUE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROYECTO_CON_PRESUPUESTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROYECTO_CON_PRESUPUESTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_INICIO_ESTIMADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_INICIO_ESTIMADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_INICIO_REAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_INICIO_REAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DURACION_ESTIMADA_MESES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DURACION_ESTIMADA_MESES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INGRESO_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INGRESO_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTIMADO_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTIMADO_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRESUPUESTADO_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRESUPUESTADO_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPLETADO_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPLETADO_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTUALIZADO_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTUALIZADO_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTUALIZADO_POR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTUALIZADO_POR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREADO_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREADO_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREADO_POR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREADO_POR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOL_Areas.AREA_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOL_Areas.AREA_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOL_Organizaciones.ORGANIZACION_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOL_Organizaciones.ORGANIZACION_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOL_Sectores.SECTOR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOL_Sectores.SECTOR_NOMBRE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

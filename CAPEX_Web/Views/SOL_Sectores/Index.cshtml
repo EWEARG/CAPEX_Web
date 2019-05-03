@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CAPEX_Web.SOL_Sectores>
+
+@{
+    ViewBag.Title = "Sectores";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SECTOR_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AREA_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SECTOR_STATUS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SECTOR_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AREA_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SECTOR_STATUS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SECTOR_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SECTOR_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SECTOR_ID })
+        </td>
+    </tr>
+}
+
+</table>

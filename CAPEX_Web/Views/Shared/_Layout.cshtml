@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CAPEX - Solicitud de Proyectos</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="../">CAPEX Web</a>
+
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-primary">Principal</button>
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="Archivo">Archivo <span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="Archivo">
+                        <a class="dropdown-item" href="../default/">Default</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../SOL_Areas/Index">Areas</a>
+                        <a class="dropdown-item" href="../SOL_Sectores/Index">Sectores</a>
+                        <a class="dropdown-item" href="../SOL_Organizaciones/Index">Organizaciones</a>
+                        <a class="dropdown-item" href="../SOL_Estados/Index">Estados</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="Proyectos">Solicitudes <span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="Proyectos">
+                        <a class="dropdown-item" target="_blank" href="https://jsfiddle.net/bootswatch/9n4nxnqy/">Open in JSFiddle</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../4/superhero/bootstrap.min.css" download>bootstrap.min.css</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../4/superhero/_variables.scss" download>_variables.scss</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../SOL_Proyectos/Index">Proyectos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://blog.bootswatch.com">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Contact">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/About">Acerca de</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Help">Ayuda</a>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ENERSA - Gerencia TIyC</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

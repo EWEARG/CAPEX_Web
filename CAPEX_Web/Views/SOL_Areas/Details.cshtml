@@ -1,0 +1,65 @@
+﻿@model CAPEX_Web.SOL_Areas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SOL_Areas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA_STATUS)
+        </dd>
+
+    </dl>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+           Sector ID
+        </th>
+        <th>
+            Sector NOMBRE
+        </th>
+        <th>
+            Sector ESTADO
+        </th>
+    </tr>
+
+    @foreach (var item in Model.SOL_Sectores)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SECTOR_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SECTOR_NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SECTOR_STATUS)
+            </td>
+        </tr>
+    }
+</table>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AREA_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

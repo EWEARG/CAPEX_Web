@@ -1,0 +1,42 @@
+﻿@model CAPEX_Web.SOL_Sectores
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SOL_Sectores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SECTOR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SECTOR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SECTOR_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SECTOR_STATUS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SECTOR_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
